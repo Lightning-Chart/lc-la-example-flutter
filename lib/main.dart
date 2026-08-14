@@ -67,8 +67,9 @@ class _SignalMonitorPageState extends State<SignalMonitorPage> {
         actions: [
           IconButton(
             tooltip: 'Load historical data',
-            onPressed:
-                _chart == null || _isStreaming ? null : _loadHistoricalData,
+            onPressed: _chart == null || _isStreaming
+                ? null
+                : _loadHistoricalData,
             icon: const Icon(Icons.data_array),
           ),
           IconButton(
@@ -167,7 +168,8 @@ class _SignalMonitorPageState extends State<SignalMonitorPage> {
     for (var i = 0; i < _historicalPointCount; i++) {
       final t = i * 0.001;
       x[i] = t;
-      raw[i] = sin(t * 10) +
+      raw[i] =
+          sin(t * 10) +
           0.35 * sin(t * 77) +
           _random.nextDouble() * 0.35 -
           0.175;
@@ -175,17 +177,18 @@ class _SignalMonitorPageState extends State<SignalMonitorPage> {
     }
 
     chart.setScrollStrategy(
-        const SetScrollStrategyOptions(axisX: ScrollStrategy.fitting));
-    chart.setData(SetDataOptions(
-      dataSetId: 'signals',
-      x: x,
-      columns: {
-        'raw': raw,
-        'filtered': filtered,
-      },
-    ));
-    chart.setAxisInterval(const SetAxisIntervalOptions(
-        axis: AxisTarget.x, start: 980, end: 1000));
+      const SetScrollStrategyOptions(axisX: ScrollStrategy.fitting),
+    );
+    chart.setData(
+      SetDataOptions(
+        dataSetId: 'signals',
+        x: x,
+        columns: {'raw': raw, 'filtered': filtered},
+      ),
+    );
+    chart.setAxisInterval(
+      const SetAxisIntervalOptions(axis: AxisTarget.x, start: 980, end: 1000),
+    );
 
     setState(() {
       _historicalLoaded = true;
@@ -203,9 +206,11 @@ class _SignalMonitorPageState extends State<SignalMonitorPage> {
     }
 
     chart.setScrollStrategy(
-        const SetScrollStrategyOptions(axisX: ScrollStrategy.scrolling));
+      const SetScrollStrategyOptions(axisX: ScrollStrategy.scrolling),
+    );
     chart.setDefaultAxisInterval(
-        const SetDefaultAxisIntervalOptions(axis: AxisTarget.x, length: 5));
+      const SetDefaultAxisIntervalOptions(axis: AxisTarget.x, length: 5),
+    );
 
     setState(() {
       _isStreaming = true;
@@ -220,7 +225,8 @@ class _SignalMonitorPageState extends State<SignalMonitorPage> {
       for (var i = 0; i < _streamBatchSize; i++) {
         final t = _nextX;
         x[i] = t;
-        raw[i] = sin(t * 10) +
+        raw[i] =
+            sin(t * 10) +
             0.35 * sin(t * 77) +
             _random.nextDouble() * 0.35 -
             0.175;
@@ -228,14 +234,13 @@ class _SignalMonitorPageState extends State<SignalMonitorPage> {
         _nextX += 0.001;
       }
 
-      chart.appendData(AppendDataOptions(
-        dataSetId: 'signals',
-        x: x,
-        columns: {
-          'raw': raw,
-          'filtered': filtered,
-        },
-      ));
+      chart.appendData(
+        AppendDataOptions(
+          dataSetId: 'signals',
+          x: x,
+          columns: {'raw': raw, 'filtered': filtered},
+        ),
+      );
 
       _sampleCount += _streamBatchSize;
       if (_sampleCount % 100000 == 0 && mounted) {
@@ -282,8 +287,9 @@ class _StatusStrip extends StatelessWidget {
           _Metric(label: 'Mode', value: isStreaming ? 'Live' : 'Historical'),
           _Metric(label: 'Samples', value: _formatCount(sampleCount)),
           _Metric(
-              label: 'Historical',
-              value: historicalLoaded ? 'Loaded' : 'Empty'),
+            label: 'Historical',
+            value: historicalLoaded ? 'Loaded' : 'Empty',
+          ),
           const Spacer(),
           if (lastError != null)
             Flexible(
@@ -291,8 +297,9 @@ class _StatusStrip extends StatelessWidget {
                 lastError.toString(),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: textTheme.bodySmall
-                    ?.copyWith(color: const Color(0xFFFFB4AB)),
+                style: textTheme.bodySmall?.copyWith(
+                  color: const Color(0xFFFFB4AB),
+                ),
               ),
             ),
         ],
@@ -331,8 +338,9 @@ class _Metric extends StatelessWidget {
             label,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style:
-                textTheme.labelSmall?.copyWith(color: const Color(0xFF8C98A4)),
+            style: textTheme.labelSmall?.copyWith(
+              color: const Color(0xFF8C98A4),
+            ),
           ),
           Text(
             value,

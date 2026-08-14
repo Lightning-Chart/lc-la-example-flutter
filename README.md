@@ -4,9 +4,11 @@ This is a Flutter application that consumes the published
 `lightning_chart_flutter_test` package from pub.dev. It demonstrates a
 1,000,000-point historical load and 10,000-sample streaming batches.
 
+Learn more: [LightningChart documentation](https://lightningchart.com/lc-la/docs/)
+
 ## Requirements
 
-- Flutter 3.24 or newer.
+- Flutter 3.44 or newer.
 - A free LightningChart JS trial key or existing commercial key. Get a trial
   key from https://lightningchart.com/js-charts/.
 
