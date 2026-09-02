@@ -3,7 +3,7 @@ import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:lightning_chart_flutter_test/lightning_chart_flutter_test.dart';
+import 'package:lightning_chart_flutter/lightning_chart_flutter.dart';
 
 const _lightningChartLicenseKey = String.fromEnvironment(
   'LCJS_LICENSE_KEY',

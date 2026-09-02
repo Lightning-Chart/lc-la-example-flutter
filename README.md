@@ -1,7 +1,7 @@
 # LightningChart Flutter Example
 
 This is a Flutter application that consumes the published
-`lightning_chart_flutter_test` package from pub.dev. It demonstrates a
+`lightning_chart_flutter` package from pub.dev. It demonstrates a
 1,000,000-point historical load and 10,000-sample streaming batches.
 
 Learn more: [LightningChart documentation](https://lightningchart.com/lc-la/docs/)
@@ -24,7 +24,7 @@ cd lc-la-example-flutter
 Create the web platform project, fetch packages, and run:
 
 ```bash
-flutter create . --platforms=web --project-name=lightning_chart_flutter_test_example
+flutter create . --platforms=web --project-name=lightning_chart_flutter_example
 flutter pub get
 flutter run -d chrome --dart-define=LCJS_LICENSE_KEY=your-license-key
 ```
@@ -35,7 +35,7 @@ platform folders.
 To use another available Flutter target, create its platform project and run it:
 
 ```bash
-flutter create . --platforms=android,ios,macos,web --project-name=lightning_chart_flutter_test_example
+flutter create . --platforms=android,ios,macos,web --project-name=lightning_chart_flutter_example
 flutter run -d <device-id> --dart-define=LCJS_LICENSE_KEY=your-license-key
 ```
 
